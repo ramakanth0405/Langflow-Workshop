@@ -1,6 +1,7 @@
 # Langflow Workshop
 
 [![Langflow Desktop](https://img.shields.io/badge/Langflow-Desktop%20App-purple.svg)](https://www.langflow.org/desktop)
+[![Langflow Library](https://img.shields.io/pypi/v/langflow?color=blue&label=Langflow%20Library)](https://pypi.org/project/langflow/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
