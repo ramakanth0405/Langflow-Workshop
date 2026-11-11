@@ -19,11 +19,12 @@ This repository contains setup instructions, datasets, visual guides, and pre-bu
   - [Step 5: Name and Create Your Cloud Project](#step-5-name-and-create-your-cloud-project)
   - [Step 6: Confirm Project Creation & Generate Key](#step-6-confirm-project-creation--generate-key)
   - [Step 7: Copy Your API Key](#step-7-copy-your-api-key)
-- [Installation: Langflow Desktop](#installation-langflow-desktop)
+- [Installation: Langflow (Desktop & Linux)](#installation-langflow-desktop--linux)
   - [Step 1: Access the Download Page](#step-1-access-the-download-page)
   - [Step 2: Request the Desktop App](#step-2-request-the-desktop-app)
   - [Step 3: Select Your Operating System & Download](#step-3-select-your-operating-system--download)
-  - [Step 4: Install the Application](#step-4-install-the-application)
+  - [Step 4: Install the Application (Windows & macOS)](#step-4-install-the-application-windows--macos)
+  - [Linux Installation via uv (Ubuntu, Debian, Fedora, Arch)](#linux-installation-via-uv-ubuntu-debian-fedora-arch)
   - [Step 5: Launch Langflow & Create a New Flow](#step-5-launch-langflow--create-a-new-flow)
 - [Verification: Testing Your Gemini API Key](#verification-testing-your-gemini-api-key)
   - [Step 1: Create a Blank Flow](#step-1-create-a-blank-flow)
@@ -117,11 +118,13 @@ A secondary pop-up dialog titled **Create a new project** will appear:
 
 ---
 
-## Installation: Langflow Desktop
+## Installation: Langflow (Desktop & Linux)
 
-We will use the standalone **IBM Langflow Desktop** application. It provides an all-in-one graphical installer with zero terminal or Python setup required.
+For **macOS** and **Windows**, you can use the standalone **IBM Langflow Desktop** application (an all-in-one graphical installer with zero terminal or Python setup required).
 
-### Step 1: Access the Download Page
+For **Linux distributions** (Ubuntu, Debian, Fedora, Arch, openSUSE, etc.), Langflow can be run in seconds using **`uv`**, the ultra-fast modern Python runner.
+
+### Step 1: Access the Download Page (macOS & Windows)
 
 1. Open your browser and go to the official website: **[https://www.langflow.org](https://www.langflow.org)**.
 2. In the top navigation bar, click on **Download**.
@@ -157,7 +160,7 @@ Click the **Download** button next to your operating system to download the inst
 
 ---
 
-### Step 4: Install the Application
+### Step 4: Install the Application (Windows & macOS)
 
 #### For Windows:
 1. Open your `Downloads` folder and double-click the downloaded `.exe` installer.
@@ -172,9 +175,48 @@ Click the **Download** button next to your operating system to download the inst
 
 ---
 
+### Linux Installation via uv (Ubuntu, Debian, Fedora, Arch)
+
+Since Langflow Desktop is currently distributed as native packages for macOS and Windows, Linux users can install and run Langflow seamlessly using **`uv`** (Astral's ultra-fast Rust-based Python package manager). `uv` provides isolated execution, eliminates dependency conflicts with system packages, and installs packages up to 10–100× faster than standard `pip`.
+
+#### 1. Install `uv`
+If `uv` is not already installed on your system, open a terminal and run:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
+```
+*(Verify installation by running `uv --version`)*
+
+#### 2. Run Langflow (Instant One-Liner via `uvx`)
+Use `uvx` to download and execute Langflow in an isolated ephemeral environment without manual virtual environment configuration:
+```bash
+export LANGFLOW_AUTO_LOGIN=true
+uvx langflow run
+```
+
+> [!TIP]
+> Setting `LANGFLOW_AUTO_LOGIN=true` bypasses the initial authentication prompt and takes you directly to the workspace dashboard.
+
+#### Alternative: Install as a Persistent CLI Tool
+If you prefer a persistent installation across terminal sessions:
+```bash
+uv tool install langflow
+export LANGFLOW_AUTO_LOGIN=true
+langflow run
+```
+
+#### 3. Access the Web Interface
+Once Langflow starts, your terminal will display:
+```text
+INFO:     Langflow is running at: http://127.0.0.1:7860
+```
+Open your browser and navigate to **[http://127.0.0.1:7860](http://127.0.0.1:7860)**. You will be greeted by the exact same home dashboard as the desktop application.
+
+---
+
 ### Step 5: Launch Langflow & Create a New Flow
 
-1. Open **IBM Langflow Desktop**. You will land on the **Starter Project** home dashboard displaying your workspace flows.
+1. Open **IBM Langflow Desktop** (on macOS/Windows) or visit **`http://127.0.0.1:7860`** in your browser (on Linux). You will land on the **Starter Project** home dashboard displaying your workspace flows.
 2. Click on the **`+ New Flow`** button in the upper right.
 
 ![Langflow Home Dashboard](assets/images/10_langflow_home_dashboard.png)
@@ -230,7 +272,6 @@ On the **Google Generative AI** component card on your canvas, configure the fol
 
 1. **Model**:
    - In the **Model** dropdown, select or type **`gemini-3-flash-preview`**.
-   - *(Note: You can also use `gemini-2.5-flash` or `gemini-1.5-flash` if preview models are restricted on your account).*
 2. **Google API Key**:
    - Click into the **Google API Key** field and paste the API key you copied from Google AI Studio.
 3. **Max Output Tokens**:
@@ -318,6 +359,8 @@ Ensure you have checked off all items before the workshop begins:
 | `Validation Failed / An unexpected error occurred` | Langflow Desktop provider modal connection error | Close the modal. Drag **Google Generative AI** directly onto the canvas and paste your API key inside the component. |
 | `429 TooManyRequests` | Gemini API free quota rate limit exceeded | Change the model from `gemini-pro` to `gemini-1.5-flash` or `gemini-2.5-flash` in the model component. |
 | *Windows SmartScreen warning* | Unrecognized downloaded installer | Click **More info**, then click **Run anyway**. |
+| `Linux: Port 7860 already in use` | Another service is listening on port 7860 | Specify an alternate port: `uvx langflow run --port 7861` and navigate to `http://127.0.0.1:7861`. |
+| `Linux: ValueError: Username and password must be set` | Langflow authentication enabled without environment configuration | Set `export LANGFLOW_AUTO_LOGIN=true` before running `uvx langflow run`. |
 | *Application runs slowly* | High RAM usage from background processes | Close unnecessary browser tabs and background applications during execution. |
 
 ---
