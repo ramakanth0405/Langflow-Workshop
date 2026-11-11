@@ -185,7 +185,7 @@ If `uv` is not already installed on your system, open a terminal and run:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.cargo/env
 ```
-*(Verify installation by running `uv --version`)*
+*(Verify installation by running `uv --version`. For other distribution package managers, pipx, or advanced options, refer to the official [uv Installation Guide](https://docs.astral.sh/uv/getting-started/installation/)).*
 
 #### 2. Run Langflow (Instant One-Liner via `uvx`)
 Use `uvx` to download and execute Langflow in an isolated ephemeral environment without manual virtual environment configuration:
