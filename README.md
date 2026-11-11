@@ -22,7 +22,9 @@ This repository contains setup instructions, datasets, visual guides, and pre-bu
 - [Installation: Langflow Desktop](#installation-langflow-desktop)
   - [Step 1: Access the Download Page](#step-1-access-the-download-page)
   - [Step 2: Request the Desktop App](#step-2-request-the-desktop-app)
-  - [Step 3: Install the Application](#step-3-install-the-application)
+  - [Step 3: Select Your Operating System & Download](#step-3-select-your-operating-system--download)
+  - [Step 4: Install the Application](#step-4-install-the-application)
+  - [Step 5: Launch Langflow & Create a New Flow](#step-5-launch-langflow--create-a-new-flow)
 - [Features](#features)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -122,19 +124,31 @@ We will use the standalone **IBM Langflow Desktop** application. It provides an 
 ### Step 2: Request the Desktop App
 
 1. You will be directed to the **Langflow for Desktop** page: **[https://www.langflow.org/desktop](https://www.langflow.org/desktop)**.
-2. Under **Download the App** on the right side, fill in the brief registration form:
+2. Under **Download the App** on the right side, fill in the registration form:
    - First Name & Last Name
    - Email address
    - Country
    - Company / Institution (or "Student" / "Self")
 3. Check the agreement box and click the green **Download** button.
-4. Select the installer for your operating system (Windows or macOS).
 
 ![Langflow Desktop Download Form](assets/images/08_langflow_desktop_download_page.jpg)
 
 ---
 
-### Step 3: Install the Application
+### Step 3: Select Your Operating System & Download
+
+After submitting the form, the download options for your platform will be displayed:
+- **macOS (Apple Silicon)**: For Apple M1, M2, M3, or M4 Macs.
+- **macOS (Intel)**: For older Intel-based Macs.
+- **Windows (x64)**: For 64-bit Windows 10 and 11 laptops.
+
+Click the **Download** button next to your operating system to download the installer file (`.exe` or `.dmg`).
+
+![Langflow OS Download Selection](assets/images/09_langflow_desktop_os_selection.png)
+
+---
+
+### Step 4: Install the Application
 
 #### For Windows:
 1. Open your `Downloads` folder and double-click the downloaded `.exe` installer.
@@ -146,6 +160,19 @@ We will use the standalone **IBM Langflow Desktop** application. It provides an 
 1. Double-click the downloaded `.dmg` file.
 2. Drag the **IBM Langflow Desktop** icon into your **Applications** folder.
 3. Open **Applications** and launch **IBM Langflow Desktop**.
+
+---
+
+### Step 5: Launch Langflow & Create a New Flow
+
+1. Open **IBM Langflow Desktop**. You will land on the **Starter Project** home dashboard displaying your workspace flows.
+2. Click on the **`+ New Flow`** button in the upper right.
+
+![Langflow Home Dashboard](assets/images/10_langflow_home_dashboard.png)
+
+3. The flow builder canvas opens displaying the initial setup dialog (*"Let us set things up first"*). From here, you can click on **Blank Flow** or pick a starter template to begin designing your AI agents!
+
+![Langflow New Flow Canvas](assets/images/11_langflow_new_flow_canvas.png)
 
 ---
 
