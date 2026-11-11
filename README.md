@@ -25,6 +25,15 @@ This repository contains setup instructions, datasets, visual guides, and pre-bu
   - [Step 3: Select Your Operating System & Download](#step-3-select-your-operating-system--download)
   - [Step 4: Install the Application](#step-4-install-the-application)
   - [Step 5: Launch Langflow & Create a New Flow](#step-5-launch-langflow--create-a-new-flow)
+- [Verification: Testing Your Gemini API Key](#verification-testing-your-gemini-api-key)
+  - [Step 1: Create a Blank Flow](#step-1-create-a-blank-flow)
+  - [Step 2: Add Chat Input Component](#step-2-add-chat-input-component)
+  - [Step 3: Add Google Generative AI (Avoid Embeddings!)](#step-3-add-google-generative-ai-avoid-embeddings)
+  - [Step 4: Configure Model to gemini-3-flash-preview](#step-4-configure-model-to-gemini-3-flash-preview)
+  - [Step 5: Add Chat Output Component](#step-5-add-chat-output-component)
+  - [Step 6: Wire the Components](#step-6-wire-the-components)
+  - [Step 7: Run the Test in Playground](#step-7-run-the-test-in-playground)
+- [Workshop Readiness Checklist](#workshop-readiness-checklist)
 - [Features](#features)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -173,6 +182,118 @@ Click the **Download** button next to your operating system to download the inst
 3. The flow builder canvas opens displaying the initial setup dialog (*"Let us set things up first"*). From here, you can click on **Blank Flow** or pick a starter template to begin designing your AI agents!
 
 ![Langflow New Flow Canvas](assets/images/11_langflow_new_flow_canvas.png)
+
+---
+
+## Verification: Testing Your Gemini API Key
+
+Before diving into complex agent workflows, build this lightweight **3-node verification flow** to ensure your Gemini API key is valid, active, and communicating smoothly with Langflow.
+
+### Step 1: Create a Blank Flow
+
+1. On the initial popup modal (*"Let us set things up first"*), click **Blank Flow** (or click the **`+ New Flow`** button on your dashboard).
+2. You will be greeted with a blank visual grid canvas.
+
+---
+
+### Step 2: Add Chat Input Component
+
+1. In the left component sidebar, click the search bar at the top and type **`Chat`** (or open the **Input & Output** category).
+2. Locate **`Chat Input`** in the list.
+3. Click and drag **`Chat Input`** onto the left side of your canvas.
+
+![Step 2: Search and Add Chat Input](assets/images/12_search_chat_components.png)
+
+---
+
+### Step 3: Add Google Generative AI (Avoid Embeddings!)
+
+1. In the left component sidebar search bar, type **`Google Generative AI`** (or navigate to **Models & Agents** → **Google**).
+2. Under the **Google Generative AI** bundle, you will see two similarly named components with blue diamond icons:
+   - **`Google Generative AI`** — The chat LLM reasoning component.
+   - **`Google Generative AI Embeddings`** — The vector embedding component.
+
+> [!CAUTION]
+> **CRITICAL COMPONENT SELECTION**:
+> You **MUST** select **`Google Generative AI`**.
+> **DO NOT** select `Google Generative AI Embeddings`. Embedding components convert text into vector numbers and cannot generate responses; using it will result in schema errors and broken wires. Hover over the item to confirm the tooltip displays **Google Generative AI**.
+
+3. Click and drag **`Google Generative AI`** onto the center of your canvas.
+
+![Step 3: Select Google Generative AI Component](assets/images/13_search_google_genai_warning.png)
+
+---
+
+### Step 4: Configure Model to gemini-3-flash-preview
+
+On the **Google Generative AI** component card on your canvas, configure the following settings:
+
+1. **Model**:
+   - In the **Model** dropdown, select or type **`gemini-3-flash-preview`**.
+   - *(Note: You can also use `gemini-2.5-flash` or `gemini-1.5-flash` if preview models are restricted on your account).*
+2. **Google API Key**:
+   - Click into the **Google API Key** field and paste the API key you copied from Google AI Studio.
+3. **Max Output Tokens**:
+   - Set to **`100`** (ensures verification responses are instantaneous and conserves quota).
+4. **Temperature**:
+   - Set to **`0.10`** (deterministic responses).
+5. **System Message**:
+   - Click the expand icon on **System Message** and enter:
+     ```text
+     You are the API Verification Assistant. If the API is functioning properly, respond strictly with: "🟢 API Working".
+     ```
+
+![Step 4: Select gemini-3-flash-preview](assets/images/14_select_gemini_3_flash_preview.png)
+
+---
+
+### Step 5: Add Chat Output Component
+
+1. Return to the sidebar search bar and search for **`Chat`** (or expand **Input & Output**).
+2. Locate **`Chat Output`**.
+3. Click and drag **`Chat Output`** onto the right side of your canvas.
+
+---
+
+### Step 6: Wire the Components
+
+Connect the nodes left-to-right to establish data flow:
+
+1. Click and drag the handle from **`Chat Input`** (`Chat Message` purple circle on the right) and connect it to **`Google Generative AI`** (`Input` purple circle on the left).
+2. Click and drag the handle from **`Google Generative AI`** (`Model Response` purple circle at the bottom right) and connect it to **`Chat Output`** (`Inputs*` purple circle on the left).
+
+Your completed test flow will look like this:
+
+![Step 6: Wire 3-Node Test Flow](assets/images/15_wire_api_verification_flow.png)
+
+---
+
+### Step 7: Run the Test in Playground
+
+1. Click the **`▷ Playground`** button in the top-right corner of the canvas.
+2. The interactive chat testing window will open.
+3. Type: `Hello is the API Working?` (or simply `Ping`) and click **Send** (or press Enter).
+4. Within 1–2 seconds, the model should respond:
+   ```text
+   🟢 API Working
+   ```
+5. A green status indicator (`Finished in ...s`) will confirm your Gemini API key and Langflow installation are 100% verified and operational!
+
+![Step 7: Playground Verification Success](assets/images/16_playground_api_test_success.png)
+
+---
+
+## Workshop Readiness Checklist
+
+Ensure you have checked off all items before the workshop begins:
+
+- [ ] **Google AI Studio Key Generated**: API key created and copied from Google AI Studio console.
+- [ ] **Langflow Desktop Installed**: App installed and successfully launched on your Mac or Windows laptop.
+- [ ] **Blank Flow Created**: Verified you can open a new flow canvas without errors.
+- [ ] **Google Generative AI Node Selected**: Confirmed you selected the LLM component (and **not** Embeddings).
+- [ ] **Model Set to `gemini-3-flash-preview`**: Model field configured with your API key.
+- [ ] **Playground Test Passed**: Verified that sending `Ping` returns `🟢 API Working`.
+- [ ] **Power & Internet**: Laptop charger plugged in and stable internet connection ready.
 
 ---
 
