@@ -210,14 +210,18 @@ Once Langflow starts, your terminal will display:
 ```text
 INFO:     Langflow is running at: http://127.0.0.1:7860
 ```
-Open your browser and navigate to **[http://127.0.0.1:7860](http://127.0.0.1:7860)**. You will be greeted by the exact same home dashboard as the desktop application.
+Open your browser and navigate to **[http://127.0.0.1:7860](http://127.0.0.1:7860)**. You will be greeted by the **Welcome to Langflow** greeting window:
+
+![Welcome to Langflow on Linux](assets/images/10b_langflow_web_welcome.png)
+
+Click on the **`+ Create first flow`** button to open the builder canvas and begin!
 
 ---
 
 ### Step 5: Launch Langflow & Create a New Flow
 
-1. Open **IBM Langflow Desktop** (on macOS/Windows) or visit **`http://127.0.0.1:7860`** in your browser (on Linux). You will land on the **Starter Project** home dashboard displaying your workspace flows.
-2. Click on the **`+ New Flow`** button in the upper right.
+1. Open **IBM Langflow Desktop** (on macOS/Windows) or visit **`http://127.0.0.1:7860`** in your browser (on Linux). You will land on the home dashboard (or welcome screen).
+2. Click on the **`+ New Flow`** (or **`+ Create first flow`**) button.
 
 ![Langflow Home Dashboard](assets/images/10_langflow_home_dashboard.png)
 
