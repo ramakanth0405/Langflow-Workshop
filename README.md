@@ -357,6 +357,7 @@ Ensure you have checked off all items before the workshop begins:
 | Problem | Root Cause | Fix |
 | :--- | :--- | :--- |
 | `Validation Failed / An unexpected error occurred` | Langflow Desktop provider modal connection error | Close the modal. Drag **Google Generative AI** directly onto the canvas and paste your API key inside the component. |
+| `{"detail": "Not Found"} at http://127.0.0.1:7860` | Langflow Desktop is running in background with `--backend-only` flag (API only, no web root) | Use the **Langflow Desktop** native app window directly, OR close the Desktop app and run `uvx langflow run`, OR visit **`http://localhost:7861`** if CLI auto-incremented port. |
 | `429 TooManyRequests` | Gemini API free quota rate limit exceeded | Change the model from `gemini-pro` to `gemini-1.5-flash` or `gemini-2.5-flash` in the model component. |
 | *Windows SmartScreen warning* | Unrecognized downloaded installer | Click **More info**, then click **Run anyway**. |
 | `Linux: Port 7860 already in use` | Another service is listening on port 7860 | Specify an alternate port: `uvx langflow run --port 7861` and navigate to `http://127.0.0.1:7861`. |
