@@ -272,14 +272,19 @@ Your completed test flow will look like this:
 
 1. Click the **`▷ Playground`** button in the top-right corner of the canvas.
 2. The interactive chat testing window will open.
-3. Type: `Hello is the API Working?` (or simply `Ping`) and click **Send** (or press Enter).
-4. Within 1–2 seconds, the model should respond:
-   ```text
-   🟢 API Working
-   ```
-5. A green status indicator (`Finished in ...s`) will confirm your Gemini API key and Langflow installation are 100% verified and operational!
+3. Locate the message input box at the bottom of the screen. Type: **`Is the API working?`** (or simply `Ping`).
 
-![Step 7: Playground Verification Success](assets/images/16_playground_api_test_success.png)
+![Step 7a: Type Test Message in Playground](assets/images/16_playground_chat_input.png)
+
+4. Click the **Send** button (the up arrow icon `↑`) or press Enter.
+5. Within 1–2 seconds, the model will process the input and display the confirmation response:
+   ```text
+   🟢 API Status: Connected & Fully Operational!
+   Yes, the API is working perfectly. How can I assist you today?
+   ```
+6. The green execution badge (`✓ Finished in ...s`) confirms that your Gemini API key, network connectivity, and Langflow installation are 100% verified and operational!
+
+![Step 7b: Playground Verification Success Response](assets/images/17_playground_test_success.png)
 
 ---
 
@@ -292,7 +297,7 @@ Ensure you have checked off all items before the workshop begins:
 - [ ] **Blank Flow Created**: Verified you can open a new flow canvas without errors.
 - [ ] **Google Generative AI Node Selected**: Confirmed you selected the LLM component (and **not** Embeddings).
 - [ ] **Model Set to `gemini-3-flash-preview`**: Model field configured with your API key.
-- [ ] **Playground Test Passed**: Verified that sending `Ping` returns `🟢 API Working`.
+- [ ] **Playground Test Passed**: Verified that sending a test message returns a successful response (`🟢 API Status: Connected...`).
 - [ ] **Power & Internet**: Laptop charger plugged in and stable internet connection ready.
 
 ---
